@@ -22,7 +22,7 @@
   --fc-paragraph: hsla(274, 84%, 12%, 1);
 
   font-size: 62.5%;
-  --fs-heading: clamp(4rem, 1rem + 6vw, 4.8rem); 
+  --fs-heading: clamp(4rem, 1rem + 3vw, 4.8rem); 
   /*--fs-heading-desktop: 4.8rem; */
   --fs-paragraph: clamp(1.8rem, 1rem + 2vw, 2.4rem);
   /*--fs-paragraph-desktop: 2.4rem;*/
@@ -213,27 +213,35 @@ section {
   }
 }
 
+.dtop {
+  display: none;
+}
+
+footer {
+  display: none;
+}
+
 @media (min-width: 900px) {
   .page {
     display: flex;
-    width: 100%;
-    height: 100%;
+    max-width: 128rem;
   }
 
   header {
-    width: 37.7rem;
-    height: 100%;
+    max-width: 37.7rem;
+    height: auto;
     padding-bottom: 0;
   }
 
   header h1 {
     font-weight: 400;
     line-height: 3.4rem;
-    
+
+    min-width: 23rem;
   }
   
   header h1 span {
-    padding: 2rem 7.4rem;
+    padding: 2rem 1rem;
     
     display: inline-block;
     justify-content: center;
@@ -253,7 +261,16 @@ section {
 
     color: var(--fc-primary);
 
-    padding: 3.2rem 3.8rem 12.0rem;
+    padding: 3.2rem 3.8rem 10rem;
+  }
+
+  header p:hover {
+    text-shadow: 1px 3px 2px hsla(0, 0%, 23%, 0.35);
+  }
+
+  main {
+    width: 90.3rem;
+    padding: 6.4rem 8rem;
   }
 
   main p {
@@ -263,27 +280,131 @@ section {
   main h2 span {
     display: none;
   }
+  
+  section {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    grid-auto-flow: row;
+
+    grid-template-areas: "A B C"
+                         "D B F"
+                         "D E F";
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .dtop {
+    display: grid;
+  }
+
+  .card img {
+    width: 22rem;
+    height: 100%;
+    object-fit: cover;
+    overflow:hidden;
+  }
+  
+  .card:nth-child(1) {
+    grid-area: A;
+    animation: topdown1 2s backwards;
+    -webkit-animation: topdown1 2s backwards;
 }
 
-footer {
-  font-family: var(--ff-footer);
-  font-size: var(--fs-footer);
-  line-height: 2.8rem;
-
-  color: var(--fc-secundary);
-
-  text-align: center;
-
-  display: none;
+  .card:nth-child(2) {
+    grid-area: B;
+    animation: topdown1 2s backwards;
+    -webkit-animation: topdown1 2s backwards;
 }
 
-footer a {
-  text-decoration: none;
-  font-weight: bold;
-
-  color: var(--fc-secundary);
+  .card:nth-child(3) {
+    grid-area: C;
+    animation: topdown1 2s backwards;
+    -webkit-animation: topdown1 2s backwards;
 }
 
-footer a:hover {
-  color: hsl(231, 17%, 8%);
+  .card:nth-child(4) {
+    grid-area: D;
+    animation: topdown2 2s backwards;
+    -webkit-animation: topdown2 2s backwards;
+}
+
+  .card:nth-child(5) {
+    grid-area: E;
+    animation: topdown2 2s backwards;
+    -webkit-animation: topdown2 2s backwards;
+}
+
+  .card:nth-child(6) {
+    grid-area: F;
+    animation: topdown2 2s backwards;
+    -webkit-animation: topdown2 2s backwards;
+}
+
+  @keyframes topdown1 {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+      -webkit-transform: translateX(-20px);
+      -moz-transform: translateX(-20px);
+      -ms-transform: translateX(-20px);
+      -o-transform: translateX(-20px);
+}
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+      -webkit-transform: translateX(0);
+      -moz-transform: translateX(0);
+      -ms-transform: translateX(0);
+      -o-transform: translateX(0);
+}
+  }
+
+  @keyframes topdown2 {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+      -webkit-transform: translateY(20px);
+      -moz-transform: translateY(20px);
+      -ms-transform: translateY(20px);
+      -o-transform: translateY(20px);
+}
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -o-transform: translateY(0);
+}
+  }
+
+  footer {
+    font-family: var(--ff-footer);
+    font-size: var(--fs-footer);
+    line-height: 2.8rem;
+  
+    color: var(--fc-secundary);
+  
+    display: block; 
+    text-align: center;
+  
+    margin-top: 9rem;
+  }
+  
+  footer a {
+    text-decoration: none;
+    font-weight: bold;
+  
+    color: var(--fc-secundary);
+  }
+  
+  footer a:hover {
+    color: hsl(231, 17%, 8%);
+  }
 }
